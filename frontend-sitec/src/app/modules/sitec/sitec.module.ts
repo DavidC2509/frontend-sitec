@@ -5,13 +5,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { CoreModule } from '../../core/core.module';
 import { RoutesSitec } from './sitec-routing.module';
 import { RootServicesSitec } from './services/rootServicesBilling';
-
-
-
+import { RootComponentsSitec } from './components/rootComponents';
 
 @NgModule({
   declarations: [
-    ...RootPagesSitec
+    ...RootPagesSitec,
+    ...RootComponentsSitec,
+    
   ],
   imports: [
     CommonModule,

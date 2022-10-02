@@ -14,4 +14,12 @@ export class WarehouseServiceService extends HttpService {
   listWarehouse() {
     return this.get<any[]>(`/fassil/warehouse/list`, true);
   }
+
+  deletWarehouse(id: number ) {
+    return this.delete<any[]>(`/fassil/warehouse/${id}/delete`, true);
+  }
+
+  postWarehouse(data :any) {
+    return this.post<any[]>(`/fassil/warehouse`,data,true);
+  }
 }

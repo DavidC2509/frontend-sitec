@@ -60,13 +60,10 @@ export class HttpService {
   protected get<T>(url: string, useCredentials: boolean = true, showSpinner: boolean = true): Observable<T> {
     const headers: HttpHeaders = new HttpHeaders();
     let options = {};
-
-    //Si usa credenciales y con token 
-    // if (useCredentials) {
-    //   options = {
-    //     headers: headers.append('Authorization', auth ? `Bearer ${auth.token}` : '')
-    //   };
-    // }
+    options = {
+      headers: headers.append('Authorization', "auth" ? `Bearer 23123` : '')
+    };
+   
 
     return this._executeApi(this.http.get(this.DOMAIN + url, options), true, showSpinner);
   }
@@ -86,14 +83,13 @@ export class HttpService {
       withCredentials?: boolean
     } = {};
     
-    //Si usa credenciales y con token 
-    // if (useCredentials) {
-    //   options.headers =  headers.append('Authorization', auth ? `Bearer ${auth.token}` : '');
-    // }
-    
-    if (useCokies){
-      options.withCredentials=true
-    }
+       
+    options = {
+      headers: headers.append('Authorization', "auth" ? `Bearer 23123` : '')
+      .append('Content-type', 'application/json')
+      .append('Access-Control-Allow-Origin',`*`)
+    };
+  
 
     return this._executeApi(this.http.post(this.DOMAIN + url, formData, options), showError, showSpinner);
   }
@@ -110,12 +106,9 @@ export class HttpService {
     const headers: HttpHeaders = new HttpHeaders();
     let options = {};
    
-    //Si usa credenciales y con token   
-    // if (useCredentials) {
-    //   options = {
-    //     headers: headers.append('Authorization', auth ? `Bearer ${auth.token}` : '')
-    //   };
-    // }
+    options = {
+      headers: headers.append('Authorization', "auth" ? `Bearer 23123` : '')
+    };
 
     return this._executeApi(this.http.put(this.DOMAIN + url, formData, options), showError, showSpinner);
   }
@@ -128,12 +121,12 @@ export class HttpService {
     const headers: HttpHeaders = new HttpHeaders();
     let options = {};
     
-    //Si usa credenciales y con token 
-    // if (useCredentials) {
-    //   options = {
-    //     headers: headers.append('Authorization', auth ? `Bearer ${auth.token}` : '')
-    //   };
-    // }
+    options = {
+      headers: headers.append('Authorization', "auth" ? `Bearer 23123` : '')
+      .append('Content-type', 'application/json')
+      .append('Access-Control-Allow-Origin',`*`)
+    };
+
     return this._executeApi(this.http.delete(this.DOMAIN + url, options), true, showSpinner);
   }
 

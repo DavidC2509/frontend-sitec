@@ -1,0 +1,45 @@
+<list-page #listPage>
+  <div class="widgetbar">
+    <button type="button" class="btn btn-primary-rgba" (click)="create()">
+      <i class="fas fa-plus mr-2"></i> Crear nuevo
+    </button>
+  </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card m-b-30 m-t-10">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <h5 class="card-title font-18">Listado producto</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <grid
+              [rows]="list"
+              [actions]="actions"
+              [columns]="columns"
+            ></grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </list-page>
+
+
+
+  <ng-template #statusTpl let-value="value">
+    <span
+      class="w3-badge w3-green"
+      [ngClass]="{
+        'badge-success': value,
+        'badge-danger': !value
+      }"
+      >
+      {{ value | status }}
+    </span>
+  </ng-template>
+
+
+  
+  

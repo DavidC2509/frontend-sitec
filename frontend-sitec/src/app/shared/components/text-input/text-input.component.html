@@ -1,0 +1,13 @@
+
+  <input *ngIf="typeValue!='number'"  (keyup)="onKeyUpEvent($event)" (blur)="onBlurEvent($event)" class="form-control" [type]="typeValue" [formControl]="control" [class.is-invalid]="ngControl.invalid && (ngControl.dirty || ngControl.touched)" placeholder="{{ placeholderValue }}"/>
+
+  <input *ngIf="typeValue=='number' && isNegativeValue" (keyup)="onKeyUpEvent($event)" (blur)="onBlurEvent($event)" class="form-control" [type]="typeValue" [formControl]="control" [class.is-invalid]="ngControl.invalid && (ngControl.dirty || ngControl.touched)" placeholder="{{ placeholderValue }}"/>
+  
+  <input appTwoDigitDecimaNumber *ngIf="typeValue=='number' && !isNegativeValue" min="0" (keyup)="onKeyUpEvent($event)" (blur)="onBlurEvent($event)" class="form-control" [type]="typeValue" [formControl]="control" [class.is-invalid]="ngControl.invalid && (ngControl.dirty || ngControl.touched)" placeholder="{{ placeholderValue }}"/>
+  
+  <div
+  class="text-danger invalid-feedback text-left"
+  *ngIf="ngControl.invalid && (ngControl.dirty || ngControl.touched)"
+  >
+  {{ inputControl | inputErrorShow }} </div>
+  

@@ -7,6 +7,7 @@ import { AppConfig } from './core/utils/config';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -14,7 +15,7 @@ export function initializeApp(appConfig: AppConfig) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,7 @@ export function initializeApp(appConfig: AppConfig) {
     SharedModule,
     ToastrModule.forRoot(),
     NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AppConfig,

@@ -1,0 +1,29 @@
+<ng-container *ngIf="!isLoading">
+  <select
+    class="form-control"
+    [(ngModel)]="model"
+    (ngModelChange)="onChangeModel()"
+    [disabled]="disabled"
+    [class.is-invalid]="
+      ngControl.invalid && (ngControl.dirty || ngControl.touched)
+    "
+  >
+      <option value="" selected>- Opciones -</option>
+      <option *ngFor="let item of list" [ngValue]="item[keyField]">
+        {{ item[valueField] }}
+      </option>
+  </select>
+  <div
+    class="text-danger invalid-feedback text-left"
+    *ngIf="ngControl.invalid && (ngControl.dirty || ngControl.touched)"
+  >
+    {{ showErrors() }}
+  </div>
+</ng-container>
+<ng-container *ngIf="isLoading">
+  <div class="form-control loading-control">
+    <div class="spinner-border spinner-border-sm" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-container>

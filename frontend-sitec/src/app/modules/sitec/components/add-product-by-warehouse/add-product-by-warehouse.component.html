@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title">Opciones de Producto de Almacen</h4>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <label for="" class="col-sm-4 control-label">Producto a Añadir: </label>
+      <div class="col-sm-8">
+        <combo-box
+        [formControl]="control('productId')"
+        url="/fassil/product/list"
+        key="id"
+        value="name"
+      ></combo-box>
+      </div>
+
+      <label for="" class="col-sm-4 control-label">Cantidad Añadir: </label>
+              <div class="col-sm-8">
+                  <text-input
+                    [formControl]="control('count')"
+                    type="number"
+                    placeholder="Ingresar Precio..."
+                  ></text-input>
+                </div>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button (click)="close()" type="button" class="btn btn-secondary">
+      Cancelar
+    </button>
+    <button (click)="store()" type="button" class="btn btn-primary">
+      Guardar
+    </button>
+  </div>
+  
+  <loading></loading>

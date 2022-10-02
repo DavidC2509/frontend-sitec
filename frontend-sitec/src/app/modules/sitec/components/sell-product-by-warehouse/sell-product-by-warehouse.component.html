@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">Venta de Producto</h4>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+
+      <label for="" class="col-sm-4 control-label">Cantidad Vender: </label>
+              <div class="col-sm-8">
+                  <text-input
+                    [formControl]="control('countSell')"
+                    type="number"
+                    placeholder="Ingresar Precio..."
+                  ></text-input>
+                </div>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button (click)="close()" type="button" class="btn btn-secondary">
+      Cancelar
+    </button>
+    <button (click)="store()" type="button" class="btn btn-primary">
+      Guardar
+    </button>
+  </div>
+  
+  <loading></loading>

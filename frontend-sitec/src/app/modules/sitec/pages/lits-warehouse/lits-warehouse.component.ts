@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { EIcon } from 'src/app/core/configurations/icon.icons';
-import { Action, Column } from 'src/app/shared/components/grid/grid.component';
+import { Action, Column, ColumnType } from 'src/app/shared/components/grid/grid.component';
 import { ListPageBase } from 'src/app/shared/components/list-page/list-page.component';
 import { WarehouseServiceService } from '../../services/warehouse-service.service';
 
@@ -13,13 +13,22 @@ export class LitsWarehouseComponent extends ListPageBase {
 
   list: any[] = [];
   
+  @ViewChild('statusTpl', { static: true }) statusTpl: TemplateRef<any>|null = null;
+
   columns: Column[] = [];
   actions: Action[] = [
     {
-      icon: EIcon.editGrid,
-      label: 'Editar',
+      icon: EIcon.deleteGrid,
+      label: 'Eleminar',
       callback: (record: any) => {
-        
+        this.deletWarehouse(record);
+      }
+    },
+    {
+      icon: EIcon.include,
+      label: 'Añadir producto',
+      callback: (record: any) => {
+        this.addProduct(record);
       }
     }
   ];
@@ -47,6 +56,16 @@ export class LitsWarehouseComponent extends ListPageBase {
       {
         name: 'Nombre', prop: 'name'
       },
+      {
+        name: 'Lugar', prop: 'place'
+      },
+      {
+        name: 'Estado',
+        prop: 'status',
+        type: ColumnType.BOOLEAN,
+        cellTemplate: this.statusTpl,
+        maxWidth: 100
+      }
     ];
    }
 
@@ -54,5 +73,16 @@ export class LitsWarehouseComponent extends ListPageBase {
     this.service.listWarehouse().subscribe(response => {
       this.list = response;
     });
+  }
+
+  deletWarehouse(item : any){
+    this.service.deletWarehouse( item.id ).subscribe(() => {
+      this.alert.show();
+      this.readAll();
+    });
+  }
+
+  addProduct(item : any){
+    this.router.navigate([`/sitec/warehouse/${item.id}/product`]);
   }
 }

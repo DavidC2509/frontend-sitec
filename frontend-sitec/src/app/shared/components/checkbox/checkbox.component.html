@@ -1,0 +1,14 @@
+
+<div class="custom-control custom-switch">    
+    <input  class="custom-control-input" 
+            type="checkbox" 
+            [formControl]="control" 
+            [class.is-invalid]="ngControl.invalid && (ngControl.dirty || ngControl.touched)"             
+            (change)="changeCheck($event)"
+            [id]="idCheckbox"
+    />
+    <label *ngIf="ngControl.value" [for]="idCheckbox" class="custom-control-label"> {{ trueTextValue }} </label>
+    <label *ngIf="!ngControl.value" [for]="idCheckbox" class="custom-control-label"> {{ falseTextValue }} </label>
+</div>
+
+<div class="text-danger invalid-feedback text-left" *ngIf="ngControl.invalid && (ngControl.dirty || ngControl.touched)">{{ inputControl | inputErrorShow }}</div>
