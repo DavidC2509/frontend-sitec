@@ -1,0 +1,37 @@
+<ngx-datatable
+  [ngClass]="{'text-black-cell-custom': colorCustom}"
+  [rows]="_rows"
+  [columns]="_columns"
+  [columnMode]="ColumnMode.force"
+  [rowHeight]="36"
+  [messages]="messages"
+  [footerHeight]="50"
+  [limit]="limit"
+  (sort)="onSort($event)"
+></ngx-datatable>
+<ng-template #actionTpl let-row="row">
+  <div class="grid-action-buttons float-right" style="padding-right: 3px;">
+    <a
+      *ngFor="let action of _primaryActions"
+      class="action-link"
+      ngbTooltip="{{ action.label }}"
+      (click)="onActionClick(action, row)"
+      >
+      <i class="{{ action.icon }}"></i>
+    </a>
+    <div *ngIf="_additionalActions" ngbDropdown class="d-inline-block" container="body" ngbTooltip="Más acciones">
+      <a class="action-link" ngbDropdownToggle >
+        <i class="feather-more-vertical"></i>
+      </a>
+      <div ngbDropdownMenu>
+        <button
+          *ngFor="let action of _additionalActions"
+          ngbDropdownItem
+          (click)="onActionClick(action,row)"
+          >
+          <i class="{{ action.icon }}"></i> {{ action.label }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

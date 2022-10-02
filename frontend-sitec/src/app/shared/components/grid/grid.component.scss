@@ -1,0 +1,17 @@
+@media (max-width: 800px) {
+    .ngx-datatable .grid-action-buttons {
+        visibility: visible;
+    }
+}
+
+.text-black-cell-custom{
+    color: #141D46;
+    font-weight: bold;
+    // font: 16px "Mukta Vaani", sans-serif;
+    // .ngx-datatable .datatable-header {
+    //     display: block;
+    //     overflow: hidden;
+    //     color: #8A98AC !important;
+    // }
+}
+

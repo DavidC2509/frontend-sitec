@@ -1,0 +1,23 @@
+<div class="breadcrumbbar">
+  <div class="row align-items-center">
+    <div class="col-md-8 col-lg-8">
+      <h4 class="page-title">{{ options.customTitle? options.customTitle: options.title }}</h4>
+      <div class="breadcrumb-list">
+        <ol class="breadcrumb">
+          <li *ngFor="let item of options.breadcrumb" class="breadcrumb-item">
+            <a [routerLink]="item.link">{{ item.label }}</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            {{ options.title }}
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <div class="widgetbar">
+        <ng-content select="div.widgetbar"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-content></ng-content>

@@ -1,0 +1,7 @@
+{
+    "env": {
+    "name": "#{envName}"
+    },
+    "apiUrl": "#{apiUrl}",
+    "mapboxKey":"#{apiMapbox}"
+}

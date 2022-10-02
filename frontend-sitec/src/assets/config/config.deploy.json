@@ -1,0 +1,6 @@
+{
+    "env": {
+    "name": "deploy"
+    },
+    "apiUrl": "https://localhost:5003/api"
+}
